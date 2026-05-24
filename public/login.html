@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+/>
+
+<title>NEXZAPP LOGIN</title>
+
+<link
+rel="preconnect"
+href="https://fonts.googleapis.com"
+>
+
+<link
+rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin
+>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+rel="stylesheet"
+>
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+-webkit-tap-highlight-color:transparent;
+}
+
+html{
+height:100%;
+overflow:hidden;
+}
+
+body{
+
+height:100%;
+overflow:hidden;
+
+background:
+radial-gradient(circle at top right,#1aff6630,transparent 30%),
+radial-gradient(circle at bottom left,#00ffcc18,transparent 30%),
+linear-gradient(
+180deg,
+#040816 0%,
+#02040a 100%
+);
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+padding:22px;
+
+color:white;
+
+}
+
+/* CARD */
+
+.login-box{
+
+width:100%;
+max-width:430px;
+
+position:relative;
+
+padding:30px 24px;
+
+border-radius:28px;
+
+background:
+linear-gradient(
+180deg,
+rgba(8,12,28,.97),
+rgba(2,4,12,.98)
+);
+
+border:
+1px solid rgba(255,255,255,.06);
+
+box-shadow:
+0 25px 80px rgba(0,0,0,.65);
+
+overflow:hidden;
+
+}
+
+/* EFFECT */
+
+.login-box::before{
+
+content:'';
+
+position:absolute;
+
+top:-140px;
+right:-140px;
+
+width:320px;
+height:320px;
+
+background:
+radial-gradient(
+circle,
+rgba(0,255,106,.20),
+transparent 70%
+);
+
+}
+
+/* LOGO */
+
+.logo-wrap{
+
+display:flex;
+align-items:center;
+gap:16px;
+
+margin-bottom:24px;
+
+}
+
+.logo-icon{
+
+width:70px;
+height:58px;
+
+border-radius:18px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:
+linear-gradient(
+135deg,
+rgba(49,255,120,.18),
+rgba(125,255,0,.10)
+);
+
+border:
+1px solid rgba(49,255,120,.18);
+
+box-shadow:
+0 0 25px rgba(49,255,120,.12);
+
+font-size:34px;
+
+color:#39ff79;
+
+}
+
+.logo{
+
+font-size:42px;
+font-weight:900;
+
+letter-spacing:-3px;
+
+line-height:1;
+
+background:
+linear-gradient(
+90deg,
+#31ff78,
+#7dff00
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+}
+
+/* TITLES */
+
+h1{
+
+font-size:32px;
+font-weight:800;
+
+line-height:1.1;
+
+margin-bottom:14px;
+
+}
+
+.desc{
+
+font-size:15px;
+line-height:1.6;
+
+color:#8d97ba;
+
+margin-bottom:22px;
+
+}
+
+/* INPUTS */
+
+.input-group{
+
+position:relative;
+margin-bottom:18px;
+
+}
+
+.input-group .left{
+
+position:absolute;
+
+left:22px;
+top:50%;
+
+transform:translateY(-50%);
+
+font-size:15px;
+color:#7c88b2;
+
+}
+
+.input-group .right{
+
+position:absolute;
+
+right:22px;
+top:50%;
+
+transform:translateY(-50%);
+
+font-size:15px;
+
+cursor:pointer;
+
+transition:.2s;
+
+color:#7c88b2;
+
+}
+
+.input-group .right:hover{
+color:#39ff79;
+}
+
+input{
+
+width:100%;
+height:58px;
+
+padding:
+0 58px;
+
+border-radius:18px;
+
+border:
+1px solid rgba(255,255,255,.06);
+
+background:
+rgba(255,255,255,.03);
+
+outline:none;
+
+color:white;
+
+font-size:16px;
+font-weight:600;
+
+transition:.25s;
+
+}
+
+input:focus{
+
+border-color:
+rgba(49,255,120,.45);
+
+box-shadow:
+0 0 0 4px rgba(49,255,120,.08);
+
+}
+
+input::placeholder{
+color:#7d88ab;
+}
+
+/* BUTTON */
+
+button{
+
+width:100%;
+height:62px;
+
+border:none;
+outline:none;
+
+margin-top:14px;
+
+border-radius:20px;
+
+cursor:pointer;
+
+font-size:16px;
+font-weight:900;
+
+letter-spacing:.5px;
+
+background:
+linear-gradient(
+90deg,
+#2ee86d,
+#7dff00
+);
+
+color:#031008;
+
+box-shadow:
+0 15px 45px rgba(73,255,122,.30);
+
+transition:.25s;
+
+}
+
+button:hover{
+
+transform:translateY(-2px);
+
+}
+
+/* STATUS */
+
+.loading{
+
+display:none;
+
+margin-top:18px;
+
+text-align:center;
+
+font-size:15px;
+font-weight:700;
+
+color:#72ff9a;
+
+}
+
+/* SECURITY */
+
+.security{
+
+margin-top:28px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+gap:12px;
+
+padding:18px;
+
+border-radius:22px;
+
+background:
+rgba(255,255,255,.03);
+
+border:
+1px solid rgba(255,255,255,.05);
+
+font-size:15px;
+font-weight:600;
+
+color:#92a0c7;
+
+}
+
+.security i{
+
+font-size:15px;
+color:#39ff79;
+
+}
+
+/* MOBILE */
+
+@media(max-width:480px){
+
+.logo{
+font-size:34px;
+}
+
+.logo-icon{
+width:64px;
+height:64px;
+font-size:30px;
+}
+
+h1{
+font-size:28px;
+}
+
+.desc{
+font-size:17px;
+}
+
+input{
+height:68px;
+font-size:15px;
+}
+
+button{
+height:58px;
+font-size:16px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login-box">
+
+<div class="logo-wrap">
+
+<div class="logo-icon">
+<i class="fa-brands fa-whatsapp"></i>
+</div>
+
+<div class="logo">
+NEXZAPP
+</div>
+
+</div>
+
+<h1>
+Entrar no painel
+</h1>
+
+<div class="desc">
+Acesse sua conta premium com proteção avançada e conexão segura.
+</div>
+
+<div class="input-group">
+
+<i class="fa-solid fa-user left"></i>
+
+<input
+id="user"
+placeholder="Usuário"
+/>
+
+</div>
+
+<div class="input-group">
+
+<i class="fa-solid fa-lock left"></i>
+
+<input
+id="pass"
+type="password"
+placeholder="Senha"
+/>
+
+<i
+id="togglePass"
+class="fa-solid fa-eye right"
+></i>
+
+</div>
+
+<button onclick="login()">
+ENTRAR
+</button>
+
+<div
+class="loading"
+id="loading"
+>
+Verificando acesso...
+</div>
+
+<div class="security">
+
+<i class="fa-solid fa-shield-halved"></i>
+
+<span>
+Conexão criptografada e protegida
+</span>
+
+</div>
+
+</div>
+
+<script>
+
+const toggle =
+document.getElementById('togglePass')
+
+const passInput =
+document.getElementById('pass')
+
+toggle.onclick = ()=>{
+
+if(passInput.type === 'password'){
+
+passInput.type='text'
+
+toggle.className =
+'fa-solid fa-eye-slash right'
+
+}else{
+
+passInput.type='password'
+
+toggle.className =
+'fa-solid fa-eye right'
+
+}
+
+}
+
+async function login(){
+
+const user =
+document.getElementById('user').value
+
+const pass =
+document.getElementById('pass').value
+
+document
+.getElementById('loading')
+.style.display='block'
+
+const res =
+await fetch('/login',{
+
+method:'POST',
+
+headers:{
+'Content-Type':'application/json'
+},
+
+body:JSON.stringify({
+user,
+pass
+})
+
+})
+
+const data =
+await res.json()
+
+if(data.success){
+
+localStorage.setItem(
+'token',
+data.token
+)
+
+localStorage.setItem(
+'role',
+data.role
+)
+
+history.pushState(null,null,'/');window.location.replace('/')
+
+}else{
+
+document
+.getElementById('loading')
+.innerHTML =
+'Acesso inválido'
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
+
+<script>
+
+/* REMOVE LOGIN FROM HISTORY */
+
+window.addEventListener('load',()=>{
+
+history.replaceState(
+null,
+null,
+location.href
+)
+
+})
+
+</script>
+

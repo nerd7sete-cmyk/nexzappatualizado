@@ -1,0 +1,2039 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NEXZAPP</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(
+180deg,
+#02040b,
+#050816,
+#02040b
+);
+
+color:white;
+
+height:100dvh;
+overflow:hidden;
+
+}
+
+/* HEADER */
+
+.header{
+
+height:72px;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+padding:0 22px;
+
+background:
+rgba(6,10,24,.96);
+
+border-bottom:
+1px solid rgba(255,255,255,.05);
+
+backdrop-filter:blur(16px);
+
+}
+
+.logo{
+
+font-size:30px;
+font-weight:800;
+
+background:
+linear-gradient(
+90deg,
+#25D366,
+#7CFC00
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+}
+
+.status{
+
+display:flex;
+align-items:center;
+gap:8px;
+
+padding:10px 14px;
+
+border-radius:14px;
+
+background:
+rgba(37,211,102,.10);
+
+border:
+1px solid rgba(37,211,102,.15);
+
+font-size:11px;
+font-weight:700;
+
+color:#25D366;
+
+}
+
+.dot{
+
+width:8px;
+height:8px;
+
+border-radius:50%;
+
+background:#25D366;
+
+box-shadow:
+0 0 12px #25D366;
+
+}
+
+/* MAIN */
+
+.main{
+
+height:calc(100dvh - 72px);
+
+overflow:auto;
+
+padding:14px;
+padding-bottom:40px;
+
+}
+
+/* GRID */
+
+.grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:14px;
+
+}
+
+/* CARD */
+
+.card{
+
+position:relative;
+
+padding:20px;
+
+min-height:150px;
+
+border-radius:30px;
+
+overflow:hidden;
+
+cursor:pointer;
+
+transition:.25s;
+
+background:
+linear-gradient(
+180deg,
+rgba(17,24,39,.98),
+rgba(10,14,28,.99)
+);
+
+border:
+1px solid rgba(255,255,255,.05);
+
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+
+}
+
+.card:hover{
+
+transform:translateY(-3px);
+
+border:
+1px solid rgba(37,211,102,.22);
+
+}
+
+.card::before{
+
+content:'';
+
+position:absolute;
+
+top:-70px;
+right:-70px;
+
+width:180px;
+height:180px;
+
+background:
+radial-gradient(
+circle,
+rgba(37,211,102,.10),
+transparent
+);
+
+}
+
+.icon{
+
+width:52px;
+height:52px;
+
+border-radius:20px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:
+rgba(37,211,102,.10);
+
+color:#25D366;
+
+font-size:22px;
+
+margin-bottom:16px;
+
+}
+
+.card h2{
+
+font-size:20px;
+font-weight:800;
+
+margin-bottom:10px;
+
+}
+
+.card p{
+
+font-size:13px;
+
+line-height:1.7;
+
+opacity:.6;
+
+}
+
+.action{
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+margin-top:18px;
+
+font-size:12px;
+font-weight:700;
+
+}
+
+/* MODAL */
+
+.modal{
+
+position:fixed;
+
+inset:0;
+
+background:
+rgba(0,0,0,.84);
+
+backdrop-filter:blur(14px);
+
+display:none;
+
+z-index:999;
+
+}
+
+.modal.active{
+
+display:block;
+
+}
+
+.modal-box{
+
+position:absolute;
+
+inset:0;
+
+overflow:auto;
+
+padding:22px;
+padding-bottom:120px;
+
+background:
+linear-gradient(
+180deg,
+#040816,
+#02040b
+);
+
+}
+
+/* MODAL HEADER */
+
+.modal-header{
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+margin-bottom:24px;
+
+}
+
+.modal-header h2{
+
+font-size:28px;
+font-weight:800;
+
+}
+
+.close{
+
+width:44px;
+height:44px;
+
+border:none;
+
+border-radius:16px;
+
+background:
+rgba(255,255,255,.05);
+
+color:white;
+
+font-size:16px;
+
+cursor:pointer;
+
+}
+
+/* CONNECTED */
+
+.connected{
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+
+padding:50px 20px;
+
+}
+
+.connected-icon{
+
+width:100px;
+height:100px;
+
+border-radius:30px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:
+rgba(37,211,102,.12);
+
+font-size:42px;
+
+color:#25D366;
+
+margin-bottom:24px;
+
+box-shadow:
+0 0 40px rgba(37,211,102,.18);
+
+}
+
+.connected h3{
+
+font-size:28px;
+font-weight:800;
+
+margin-bottom:10px;
+
+}
+
+.connected p{
+
+font-size:14px;
+
+opacity:.6;
+
+margin-bottom:26px;
+
+}
+
+/* QR */
+
+.qr{
+
+width:260px;
+height:260px;
+
+background:white;
+
+border-radius:26px;
+
+padding:10px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+margin:auto;
+
+margin-top:30px;
+
+}
+
+.qr img{
+
+width:100%;
+height:100%;
+
+object-fit:contain;
+
+}
+
+/* INPUT */
+
+textarea,
+input{
+
+width:100%;
+
+background:
+rgba(255,255,255,.03);
+
+border:none;
+outline:none;
+
+padding:16px;
+
+border-radius:18px;
+
+color:white;
+
+margin-bottom:14px;
+
+font-size:13px;
+
+border:
+1px solid rgba(255,255,255,.05);
+
+}
+
+textarea{
+
+height:150px;
+resize:none;
+
+}
+
+.file{
+
+padding:14px;
+
+border-radius:18px;
+
+background:
+rgba(255,255,255,.03);
+
+border:
+1px dashed rgba(255,255,255,.08);
+
+margin-bottom:16px;
+
+}
+
+/* BUTTON */
+
+.btn{
+
+width:100%;
+height:52px;
+
+border:none;
+outline:none;
+
+border-radius:18px;
+
+background:
+linear-gradient(
+90deg,
+#25D366,
+#7CFC00
+);
+
+color:black;
+
+font-size:14px;
+font-weight:800;
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+.btn:hover{
+
+transform:translateY(-2px);
+
+box-shadow:
+0 10px 25px rgba(37,211,102,.18);
+
+}
+
+/* GROUPS */
+
+.groups{
+
+display:flex;
+flex-direction:column;
+
+gap:14px;
+
+margin-bottom:22px;
+
+max-height:340px;
+
+overflow:auto;
+
+padding-right:4px;
+
+}
+
+.group{
+
+padding:16px 18px;
+
+border-radius:22px;
+
+background:
+linear-gradient(
+180deg,
+rgba(17,24,39,.95),
+rgba(15,23,42,.98)
+);
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+border:
+1px solid rgba(255,255,255,.05);
+
+}
+
+.group-left{
+
+display:flex;
+align-items:center;
+
+gap:14px;
+
+flex:1;
+
+min-width:0;
+
+}
+
+.group input{
+
+width:18px;
+height:18px;
+
+min-width:18px;
+
+accent-color:#25D366;
+
+}
+
+.group-name{
+
+font-size:14px;
+font-weight:600;
+
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+
+}
+
+.group-status{
+
+font-size:11px;
+font-weight:700;
+
+color:#25D366;
+
+padding:8px 12px;
+
+border-radius:12px;
+
+background:
+rgba(37,211,102,.10);
+
+border:
+1px solid rgba(37,211,102,.15);
+
+}
+
+/* PROGRESS */
+
+.progress{
+
+margin-top:18px;
+
+padding:14px;
+padding-bottom:40px;
+
+border-radius:22px;
+
+background:
+rgba(255,255,255,.03);
+
+border:
+1px solid rgba(255,255,255,.05);
+
+}
+
+.bar{
+
+width:100%;
+height:10px;
+
+border-radius:20px;
+
+overflow:hidden;
+
+background:
+rgba(255,255,255,.05);
+
+margin-top:12px;
+
+}
+
+.bar div{
+
+width:0%;
+
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+#25D366,
+#7CFC00
+);
+
+transition:.3s;
+
+}
+
+@media(max-width:700px){
+
+.grid{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<div class="logo">
+NEXZAPP
+</div>
+
+<div class="status">
+
+<div class="dot"></div>
+
+<span id="status">
+CARREGANDO
+</span>
+
+</div>
+
+</div>
+
+<div class="main">
+
+<div class="grid">
+
+<div class="card" onclick="openModal('connectModal')">
+
+<div>
+
+<div class="icon">
+<i class="fa-solid fa-link"></i>
+</div>
+
+<h2>
+Conexão
+</h2>
+
+<p>
+Conecte sua sessão WhatsApp.
+</p>
+
+</div>
+
+<div class="action">
+
+<span>
+Abrir conexão
+</span>
+
+<i class="fa-solid fa-arrow-right"></i>
+
+</div>
+
+</div>
+
+<div class="card" onclick="openModal('listModal')">
+
+<div>
+
+<div class="icon">
+<i class="fa-solid fa-paper-plane"></i>
+</div>
+
+<h2>
+Disparo Lista
+</h2>
+
+<p>
+Campanhas privadas premium.
+</p>
+
+</div>
+
+<div class="action">
+
+<span>
+Abrir disparo
+</span>
+
+<i class="fa-solid fa-arrow-right"></i>
+
+</div>
+
+</div>
+
+<div class="card" onclick="openModal('groupModal');loadGroups()">
+
+<div>
+
+<div class="icon">
+<i class="fa-solid fa-users"></i>
+</div>
+
+<h2>
+Disparo Grupos
+</h2>
+
+<p>
+Campanhas automáticas em grupos.
+</p>
+
+</div>
+
+<div class="action">
+
+<span>
+Abrir grupos
+</span>
+
+<i class="fa-solid fa-arrow-right"></i>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div>
+
+<div class="icon">
+<i class="fa-solid fa-headset"></i>
+</div>
+
+<h2>
+Suporte
+</h2>
+
+<p>
+Atendimento premium Nexzapp.
+</p>
+
+</div>
+
+<div class="action">
+
+<span>
+Atendimento online
+</span>
+
+<i class="fa-solid fa-arrow-right"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CONEXAO -->
+
+<div class="modal" id="connectModal">
+
+<div class="modal-box">
+
+<div class="modal-header">
+
+<h2>
+Conexão
+</h2>
+
+<button class="close" onclick="closeModal('connectModal')">
+<i class="fa-solid fa-xmark"></i>
+</button>
+
+</div>
+
+<div id="connectContent">
+
+<div class="qr">
+
+<img id="qrImage">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- LISTA -->
+
+<div class="modal" id="listModal">
+
+<div class="modal-box">
+
+<div class="modal-header">
+
+<h2>
+Disparo Lista
+</h2>
+
+<button class="close" onclick="closeModal('listModal')">
+<i class="fa-solid fa-xmark"></i>
+</button>
+
+</div>
+
+<textarea id="numbers" placeholder="5511999999999"></textarea>
+
+<textarea id="messageList" placeholder="Digite sua campanha"></textarea>
+
+<div class="file">
+<input type="file" id="mediaList">
+</div>
+
+<button class="btn" onclick="sendList()" id="listButton">
+INICIAR DISPARO
+</button>
+
+<div class="progress">
+
+<div id="listStatus">
+Aguardando disparo...
+</div>
+
+<div class="bar">
+<div id="listBar"></div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- GROUPS -->
+
+<div class="modal" id="groupModal">
+
+<div class="modal-box">
+
+<div class="modal-header">
+
+<h2>
+Disparo Grupos
+</h2>
+
+<button class="close" onclick="closeModal('groupModal')">
+<i class="fa-solid fa-xmark"></i>
+</button>
+
+</div>
+
+<div class="groups" id="groupsContainer">
+
+CARREGANDO...
+
+</div>
+
+<textarea id="messageGroup" placeholder="Digite sua campanha"></textarea>
+
+<div class="file">
+<input type="file" id="mediaGroup">
+</div>
+
+<button class="btn" onclick="sendGroups()" id="groupButton">
+INICIAR DISPARO
+</button>
+
+<div class="progress">
+
+<div id="groupStatus">
+Aguardando disparo...
+</div>
+
+<div class="bar">
+<div id="groupBar"></div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function openModal(id){
+
+document
+.getElementById(id)
+.classList.add('active')
+
+}
+
+function closeModal(id){
+
+document
+.getElementById(id)
+.classList.remove('active')
+
+}
+
+/* STATUS */
+
+async function loadQR(){
+
+try{
+
+const res =
+await fetch('/status',{headers:{authorization:localStorage.getItem('token')}})
+
+const data =
+await res.json()
+
+if(data.connected){
+
+if(
+document
+.getElementById('connectContent')
+.dataset.connected == 'true'
+){
+return
+}
+
+document
+.getElementById('connectContent')
+.dataset.connected = 'true'
+
+document
+.getElementById('status')
+.innerHTML =
+'CONECTADO'
+
+document
+.getElementById('connectContent')
+.innerHTML = `
+
+<div class="connected">
+
+<div class="connected-icon">
+<i class="fa-brands fa-whatsapp"></i>
+</div>
+
+<h3>
+WhatsApp Conectado
+</h3>
+
+<p>
+Sua sessão está ativa e pronta para disparos.
+</p>
+
+<button class="btn" onclick="location.reload()">
+ATUALIZAR SESSÃO
+</button>
+
+</div>
+
+`
+
+}else{
+
+document
+.getElementById('connectContent')
+.dataset.connected = 'false'
+
+document
+.getElementById('status')
+.innerHTML =
+'DESCONECTADO'
+
+document
+.getElementById('connectContent')
+.innerHTML = `
+
+<div class="qr">
+
+<img id="qrImage">
+
+</div>
+
+`
+
+setTimeout(()=>{
+
+if(data.qr){
+
+document
+.getElementById('qrImage')
+.src = data.qr
+
+}
+
+},100)
+
+}
+
+}catch(err){
+
+console.log(err)
+
+}
+
+}
+
+setInterval(loadQR,5000)
+
+loadQR()
+
+/* GROUPS */
+
+async function loadGroups(){
+
+const container =
+document.getElementById('groupsContainer')
+
+container.innerHTML =
+'CARREGANDO...'
+
+try{
+
+const res =
+await fetch('/groups',{headers:{authorization:localStorage.getItem('token')}})
+
+const groups =
+await res.json()
+
+container.innerHTML=''
+
+const savedGroups =
+JSON.parse(
+localStorage.getItem('selectedGroups') || '[]'
+)
+
+groups.forEach(group=>{
+
+const checked =
+savedGroups.includes(group.id)
+? 'checked'
+: ''
+
+container.innerHTML += `
+
+<div class="group">
+
+<div class="group-left">
+
+<input
+type="checkbox"
+value="${group.id}"
+class="groupCheck"
+${checked}
+onchange="saveGroups()"
+>
+
+<div class="group-name">
+${group.name}
+</div>
+
+</div>
+
+<div class="group-status">
+ONLINE
+</div>
+
+</div>
+
+`
+
+})
+
+}catch(err){
+
+container.innerHTML =
+'ERRO AO CARREGAR'
+
+}
+
+}
+
+/* LISTA */
+
+async function sendList(){
+
+const button =
+document.getElementById('listButton')
+
+button.innerHTML =
+'DISPARANDO...'
+
+const form =
+new FormData()
+
+form.append(
+'numbers',
+document.getElementById('numbers').value
+)
+
+form.append(
+'message',
+document.getElementById('messageList').value
+)
+
+const media =
+document.getElementById('mediaList').files[0]
+
+if(media){
+
+form.append(
+'media',
+media
+)
+
+}
+
+const res =
+await fetch('/send-list',{headers:{authorization:localStorage.getItem('token')},headers:{authorization:localStorage.getItem('token')},
+
+method:'POST',
+body:form
+
+})
+
+const data =
+await res.json()
+
+document
+.getElementById('listStatus')
+.innerHTML =
+
+'ENVIADOS: ' +
+data.sent +
+' | ERROS: ' +
+data.failed
+
+document
+.getElementById('listBar')
+.style.width='100%'
+
+button.innerHTML =
+'FINALIZADO'
+
+}
+
+/* GROUPS */
+
+async function sendGroups(){
+
+const checks =
+document.querySelectorAll('.groupCheck:checked')
+
+const groups = []
+
+checks.forEach(check=>{
+
+groups.push(check.value)
+
+})
+
+const form =
+new FormData()
+
+form.append(
+'groups',
+JSON.stringify(groups)
+)
+
+form.append(
+'message',
+document.getElementById('messageGroup').value
+)
+
+const media =
+document.getElementById('mediaGroup').files[0]
+
+if(media){
+
+form.append(
+'media',
+media
+)
+
+}
+
+const button =
+document.getElementById('groupButton')
+
+button.innerHTML =
+'DISPARANDO...'
+
+const res =
+await fetch('/send-groups',{headers:{authorization:localStorage.getItem('token')},headers:{authorization:localStorage.getItem('token')},
+
+method:'POST',
+body:form
+
+})
+
+const data =
+await res.json()
+
+document
+.getElementById('groupStatus')
+.innerHTML =
+
+'ENVIADOS: ' +
+data.sent +
+' | ERROS: ' +
+data.failed
+
+document
+.getElementById('groupBar')
+.style.width='100%'
+
+button.innerHTML =
+'FINALIZADO'
+
+}
+
+function saveGroups(){
+
+const checks =
+document.querySelectorAll('.groupCheck:checked')
+
+const groups = []
+
+checks.forEach(check=>{
+
+groups.push(check.value)
+
+})
+
+localStorage.setItem(
+'selectedGroups',
+JSON.stringify(groups)
+)
+
+}
+
+</script>
+
+</body>
+</html>
+
+
+<style>
+
+/* ===== PREMIUM SAFE UPDATES ===== */
+
+/* BOTAO DISPARANDO */
+
+.loading{
+
+opacity:.7;
+
+pointer-events:none;
+
+animation:pulseButton 1.2s infinite;
+
+}
+
+@keyframes pulseButton{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(.98);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
+/* STATUS PREMIUM */
+
+.live-status{
+
+margin-top:14px;
+
+padding:14px 16px;
+
+border-radius:16px;
+
+background:
+rgba(37,211,102,.08);
+
+border:
+1px solid rgba(37,211,102,.12);
+
+font-size:12px;
+
+font-weight:600;
+
+line-height:1.7;
+
+color:#d1fae5;
+
+display:none;
+
+}
+
+/* BARRA PREMIUM */
+
+.bar{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.bar div{
+
+box-shadow:
+0 0 20px rgba(37,211,102,.35);
+
+transition:width .6s ease;
+
+}
+
+/* FINALIZADO */
+
+.finished{
+
+background:
+rgba(37,211,102,.10);
+
+border:
+1px solid rgba(37,211,102,.15);
+
+color:#25D366;
+
+}
+
+/* CONTADOR */
+
+.counter{
+
+margin-top:10px;
+
+font-size:12px;
+
+opacity:.7;
+
+}
+
+</style>
+
+<script>
+
+/* ===== PREMIUM SAFE UX ===== */
+
+/* LISTA */
+
+const oldSendList = sendList
+
+sendList = async function(){
+
+const button =
+document.getElementById('listButton')
+
+const numbers =
+document.getElementById('numbers')
+.value
+.split('\\n')
+.filter(n=>n.trim())
+
+/* PREVIEW */
+
+let preview =
+document.getElementById('listPreview')
+
+if(!preview){
+
+preview =
+document.createElement('div')
+
+preview.id='listPreview'
+
+preview.className='live-status'
+
+document
+.querySelector('#listButton')
+.insertAdjacentElement(
+'afterend',
+preview
+)
+
+}
+
+preview.style.display='block'
+
+preview.innerHTML =
+
+'Campanha carregada<br><br>' +
+
+'Contatos: ' +
+numbers.length +
+'<br>' +
+
+'Preparando disparo...'
+
+button.classList.add('loading')
+
+button.innerHTML =
+'REALIZANDO DISPARO...'
+
+await oldSendList()
+
+preview.innerHTML =
+
+'✓ Campanha finalizada<br><br>' +
+
+'Disparo concluído com sucesso.'
+
+preview.classList.add('finished')
+
+button.classList.remove('loading')
+
+}
+
+/* GROUPS */
+
+const oldSendGroups = sendGroups
+
+sendGroups = async function(){
+
+const button =
+document.getElementById('groupButton')
+
+const checks =
+document.querySelectorAll('.groupCheck:checked')
+
+/* PREVIEW */
+
+let preview =
+document.getElementById('groupPreview')
+
+if(!preview){
+
+preview =
+document.createElement('div')
+
+preview.id='groupPreview'
+
+preview.className='live-status'
+
+document
+.querySelector('#groupButton')
+.insertAdjacentElement(
+'afterend',
+preview
+)
+
+}
+
+preview.style.display='block'
+
+preview.innerHTML =
+
+'Campanha carregada<br><br>' +
+
+'Grupos selecionados: ' +
+checks.length +
+'<br>' +
+
+'Preparando disparo...'
+
+button.classList.add('loading')
+
+button.innerHTML =
+'REALIZANDO DISPARO...'
+
+await oldSendGroups()
+
+preview.innerHTML =
+
+'✓ Campanha finalizada<br><br>' +
+
+'Disparo concluído com sucesso.'
+
+preview.classList.add('finished')
+
+button.classList.remove('loading')
+
+}
+
+</script>
+
+
+<style>
+
+/* ===== FIX SCROLL BUG ===== */
+
+html,
+body{
+
+overflow-x:hidden !important;
+
+}
+
+/* MODAIS */
+
+.modal,
+.modal-box{
+
+overflow-x:hidden !important;
+
+}
+
+/* GRUPOS */
+
+.groups{
+
+overflow-x:hidden !important;
+
+}
+
+/* BARRAS */
+
+.bar{
+
+max-width:100% !important;
+
+overflow:hidden !important;
+
+}
+
+/* PROGRESS */
+
+.progress{
+
+overflow:hidden !important;
+
+}
+
+/* INPUTS */
+
+textarea,
+input{
+
+max-width:100% !important;
+
+}
+
+/* CARDS */
+
+.card{
+
+overflow:hidden !important;
+
+}
+
+/* GROUP */
+
+.group{
+
+max-width:100% !important;
+
+overflow:hidden !important;
+
+}
+
+/* NOMES */
+
+.group-name{
+
+max-width:100%;
+
+overflow:hidden;
+
+text-overflow:ellipsis;
+
+white-space:nowrap;
+
+}
+
+/* PREVIEW */
+
+.live-status{
+
+max-width:100% !important;
+
+overflow:hidden !important;
+
+word-break:break-word;
+
+}
+
+/* MOBILE FIX */
+
+*{
+
+-webkit-tap-highlight-color:transparent;
+
+}
+
+</style>
+
+
+<script>
+
+/* AUTH CHECK */
+
+async function checkAuth(){
+
+const token =
+localStorage.getItem('token')
+
+if(!token){
+
+window.location.replace('/login.html')
+
+return
+
+}
+
+try{
+
+const res =
+await fetch('/auth',{
+
+headers:{
+authorization:token
+}
+
+})
+
+const data =
+await res.json()
+
+if(!data.success){
+
+window.location.replace('/login.html')
+
+}
+
+}catch{
+
+window.location.replace('/login.html')
+
+}
+
+}
+
+checkAuth()
+
+</script>
+
+
+<script>
+
+/* ===== ADMIN PANEL ===== */
+
+async function loadAdmin(){
+
+const role =
+localStorage.getItem('role')
+
+if(role !== 'admin') return
+
+const grid =
+document.querySelector('.grid')
+
+const card =
+document.createElement('div')
+
+card.className='card'
+
+card.onclick=()=>openModal('adminModal')
+
+card.innerHTML = `
+
+<div>
+
+<div class="icon">
+<i class="fa-solid fa-user-shield"></i>
+</div>
+
+<h2>
+Admin
+</h2>
+
+<p>
+Gerencie usuários do sistema.
+</p>
+
+</div>
+
+<div class="action">
+
+<span>
+Abrir painel
+</span>
+
+<i class="fa-solid fa-arrow-right"></i>
+
+</div>
+
+`
+
+grid.appendChild(card)
+
+/* MODAL */
+
+const modal =
+document.createElement('div')
+
+modal.className='modal'
+
+modal.id='adminModal'
+
+modal.innerHTML = `
+
+<div class="modal-box">
+
+<div class="modal-header">
+
+<h2>
+Painel Admin
+</h2>
+
+<button
+class="close"
+onclick="closeModal('adminModal')"
+>
+<i class="fa-solid fa-xmark"></i>
+</button>
+
+</div>
+
+<input
+type="text"
+id="newUser"
+placeholder="Usuário"
+>
+
+<input
+type="password"
+id="newPass"
+placeholder="Senha"
+>
+
+<button
+class="btn"
+onclick="createUser()"
+>
+CRIAR USUÁRIO
+</button>
+
+<div
+class="progress"
+style="margin-top:18px;"
+>
+
+<div id="adminStatus">
+Nenhuma ação realizada.
+</div>
+
+</div>
+
+<div
+class="groups"
+id="usersList"
+style="margin-top:18px;"
+>
+
+CARREGANDO...
+
+</div>
+
+</div>
+
+`
+
+document.body.appendChild(modal)
+
+loadUsers()
+
+}
+
+async function createUser(){
+
+const token =
+localStorage.getItem('token')
+
+const user =
+document.getElementById('newUser').value
+
+const pass =
+document.getElementById('newPass').value
+
+const res =
+await fetch('/create-user',{
+
+method:'POST',
+
+headers:{
+'Content-Type':'application/json',
+authorization:token
+},
+
+body:JSON.stringify({
+user,
+pass
+})
+
+})
+
+const data =
+await res.json()
+
+if(data.success){
+
+document
+.getElementById('adminStatus')
+.innerHTML =
+'✓ Usuário criado com sucesso'
+
+loadUsers()
+
+}else{
+
+document
+.getElementById('connectContent')
+.dataset.connected = 'false'
+
+document
+.getElementById('adminStatus')
+.innerHTML =
+'Erro ao criar usuário'
+
+}
+
+}
+
+async function loadUsers(){
+
+const token =
+localStorage.getItem('token')
+
+const res =
+await fetch('/users',{
+
+headers:{
+authorization:token
+}
+
+})
+
+const users =
+await res.json()
+
+const list =
+document.getElementById('usersList')
+
+list.innerHTML=''
+
+users.forEach(user=>{
+
+list.innerHTML += `
+
+<div class="group">
+
+<div class="group-left">
+
+<div class="group-name">
+${user.user}
+</div>
+
+</div>
+
+<button
+class="btn"
+style="
+width:120px;
+height:42px;
+border-radius:14px;
+font-size:12px;
+"
+onclick="deleteUser('${user.user}')"
+>
+REMOVER
+</button>
+
+</div>
+
+`
+
+})
+
+}
+
+async function deleteUser(user){
+
+const token =
+localStorage.getItem('token')
+
+await fetch('/delete-user',{
+
+method:'POST',
+
+headers:{
+'Content-Type':'application/json',
+authorization:token
+},
+
+body:JSON.stringify({
+user
+})
+
+})
+
+loadUsers()
+
+}
+
+loadAdmin()
+
+</script>
+
+
+<script>
+
+/* BLOCK BACK LOGIN */
+
+history.pushState(null,null,location.href)
+
+window.onpopstate = function () {
+
+history.pushState(null,null,location.href)
+
+}
+
+</script>
+
+
+<script>
+
+/* BLOCK BACK */
+
+history.replaceState(
+null,
+null,
+location.href
+)
+
+window.addEventListener(
+'popstate',
+function(){
+
+history.pushState(
+null,
+null,
+location.href
+)
+
+}
+)
+
+</script>
+
