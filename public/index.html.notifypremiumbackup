@@ -2090,45 +2090,6 @@ fill:#00ff88;
 
 /* AVISO */
 
-</svg>
-`;
-
-logoutBtn.onclick = ()=>{
-
-localStorage.clear();
-sessionStorage.clear();
-
-window.location.href =
-"/login.html";
-
-};
-
-document.body.appendChild(logoutBtn);
-
-}
-
-/* AVISO */
-
-const agora = Date.now();
-
-const ultimoAviso =
-localStorage.getItem(
-"notifyFloatingTime"
-);
-
-const intervalo =
-6 * 60 * 60 * 1000;
-
-if(
-!ultimoAviso ||
-(agora - Number(ultimoAviso)) > intervalo
-){
-
-
-<style>
-
-/* AVISO PREMIUM */
-
 #notifyFloatingPremium{
 
 position:fixed;
@@ -2136,13 +2097,13 @@ position:fixed;
 left:16px;
 bottom:16px;
 
-width:270px;
+width:260px;
 
-padding:16px;
+padding:14px;
 
-border-radius:20px;
+border-radius:18px;
 
-background:rgba(8,15,30,.82);
+background:rgba(8,15,30,.78);
 
 border:1px solid rgba(0,255,120,.08);
 
@@ -2153,46 +2114,9 @@ z-index:999998;
 font-family:Arial,sans-serif;
 
 box-shadow:
-0 10px 25px rgba(0,0,0,.25),
-0 0 20px rgba(0,255,120,.04);
+0 10px 25px rgba(0,0,0,.25);
 
-animation:notifyFadePremium .35s ease;
-
-}
-
-#notifyFloatingHeader{
-
-display:flex;
-align-items:center;
-gap:10px;
-
-margin-bottom:10px;
-
-}
-
-#notifyFloatingIcon{
-
-width:34px;
-height:34px;
-
-border-radius:12px;
-
-background:rgba(0,255,120,.08);
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-flex-shrink:0;
-
-}
-
-#notifyFloatingIcon svg{
-
-width:18px;
-height:18px;
-
-fill:#00ff88;
+animation:notifyFade .35s ease;
 
 }
 
@@ -2203,13 +2127,15 @@ font-weight:700;
 
 color:#fff;
 
+margin-bottom:8px;
+
 }
 
 #notifyFloatingText{
 
 font-size:11px;
 
-line-height:1.7;
+line-height:1.6;
 
 color:#cbd5e1;
 
@@ -2217,7 +2143,7 @@ color:#cbd5e1;
 
 #notifyFloatingSmall{
 
-margin-top:10px;
+margin-top:8px;
 
 font-size:10px;
 
@@ -2227,7 +2153,7 @@ color:#94a3b8;
 
 }
 
-@keyframes notifyFadePremium{
+@keyframes notifyFade{
 
 from{
 opacity:0;
@@ -2242,330 +2168,25 @@ transform:translateY(0);
 }
 
 @media(max-width:900px){
-
-#notifyFloatingPremium{
-
-left:12px;
-bottom:12px;
-
-width:240px;
-
-padding:14px;
-
-border-radius:18px;
-
-}
-
-#notifyFloatingIcon{
-
-width:30px;
-height:30px;
-
-}
-
-#notifyFloatingIcon svg{
-
-width:16px;
-height:16px;
-
-}
-
-}
-
-</style>
-
-<script>
-
-window.addEventListener("load",()=>{
-
-/* REMOVE ANTIGO */
-
-const antigo =
-document.getElementById(
-"notifyFloatingPremium"
-);
-
-if(antigo){
-antigo.remove();
-}
-
-/* CONTROLE TEMPO */
-
-const agora = Date.now();
-
-const ultimoAviso =
-localStorage.getItem(
-"notifyFloatingTime"
-);
-
-const intervalo =
-6 * 60 * 60 * 1000;
-
-if(
-ultimoAviso &&
-(agora - Number(ultimoAviso)) < intervalo
-){
-return;
-}
-
-/* CRIA AVISO */
-
-const notify =
-document.createElement("div");
-
-notify.id =
-"notifyFloatingPremium";
-
-notify.innerHTML = `
-
-<div id="notifyFloatingHeader">
-
-<div id="notifyFloatingIcon">
-
-<svg viewBox="0 0 24 24">
-<path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V11H13V17ZM13 9H11V7H13V9Z"/>
-</svg>
-
-</div>
-
-<div id="notifyFloatingTitle">
-Informações importantes
-</div>
-
-</div>
-
-<div id="notifyFloatingText">
-
-Para maior estabilidade, segurança e humanização das sessões conectadas ao sistema, algumas notificações do WhatsApp no aparelho podem sofrer pequenas limitações temporárias durante o uso.
-
-<br><br>
-
-As mensagens continuam sendo processadas normalmente em tempo real.
-
-</div>
-
-<div id="notifyFloatingSmall">
-
-Caso queira normalizar totalmente as notificações após finalizar o uso:
-<br>
-WhatsApp → Dispositivos conectados
-
-</div>
-
-`;
-
-document.body.appendChild(notify);
-
-localStorage.setItem(
-"notifyFloatingTime",
-agora
-);
-
-/* SOME SOZINHO */
-
-setTimeout(()=>{
-
-if(notify){
-
-notify.style.opacity="0";
-
-setTimeout(()=>{
-notify.remove();
-},300);
-
-}
-
-},18000);
-
-});
-
-</script>
-
-
-<style>
-
-/* BOTÃO SAIR */
-
-#logoutFloatingPremium{
-
-position:fixed;
-
-right:16px;
-bottom:16px;
-
-width:54px;
-height:54px;
-
-border:none;
-border-radius:18px;
-
-background:linear-gradient(180deg,#263041,#121926);
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-cursor:pointer;
-
-z-index:999999;
-
-box-shadow:
-0 10px 25px rgba(0,0,0,.35),
-0 0 20px rgba(0,255,120,.05);
-
-transition:.25s;
-
-}
-
-#logoutFloatingPremium:hover{
-
-transform:translateY(-2px) scale(1.03);
-
-}
-
-#logoutFloatingPremium svg{
-
-width:24px;
-height:24px;
-
-fill:#00ff88;
-
-}
-
-/* AVISO */
-
-#notifyFloatingPremium{
-
-position:fixed;
-
-left:16px;
-bottom:16px;
-
-width:270px;
-
-padding:16px;
-
-border-radius:20px;
-
-background:rgba(8,15,30,.82);
-
-border:1px solid rgba(0,255,120,.08);
-
-backdrop-filter:blur(14px);
-
-z-index:999998;
-
-font-family:Arial,sans-serif;
-
-box-shadow:
-0 10px 25px rgba(0,0,0,.25),
-0 0 20px rgba(0,255,120,.04);
-
-animation:notifyFadePremium .35s ease;
-
-}
-
-#notifyFloatingHeader{
-
-display:flex;
-align-items:center;
-gap:10px;
-
-margin-bottom:10px;
-
-}
-
-#notifyFloatingIcon{
-
-width:34px;
-height:34px;
-
-border-radius:12px;
-
-background:rgba(0,255,120,.08);
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-flex-shrink:0;
-
-}
-
-#notifyFloatingIcon svg{
-
-width:18px;
-height:18px;
-
-fill:#00ff88;
-
-}
-
-#notifyFloatingTitle{
-
-font-size:13px;
-font-weight:700;
-
-color:#fff;
-
-}
-
-#notifyFloatingText{
-
-font-size:11px;
-
-line-height:1.7;
-
-color:#cbd5e1;
-
-}
-
-#notifyFloatingSmall{
-
-margin-top:10px;
-
-font-size:10px;
-
-line-height:1.5;
-
-color:#94a3b8;
-
-}
-
-@keyframes notifyFadePremium{
-
-from{
-opacity:0;
-transform:translateY(10px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
-
-}
-
-@media(max-width:900px){
-
-#notifyFloatingPremium{
-
-left:12px;
-bottom:12px;
-
-width:240px;
-
-padding:14px;
-
-}
 
 #logoutFloatingPremium{
 
 right:12px;
 bottom:12px;
 
-width:50px;
-height:50px;
+width:52px;
+height:52px;
+
+}
+
+#notifyFloatingPremium{
+
+left:12px;
+bottom:12px;
+
+width:240px;
+
+padding:12px;
 
 }
 
@@ -2607,7 +2228,7 @@ document.body.appendChild(logoutBtn);
 
 }
 
-/* NOTIFICAÇÃO */
+/* AVISO */
 
 const agora = Date.now();
 
@@ -2634,38 +2255,22 @@ notify.id =
 
 notify.innerHTML = `
 
-<div id="notifyFloatingHeader">
-
-<div id="notifyFloatingIcon">
-
-<svg viewBox="0 0 24 24">
-<path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V11H13V17ZM13 9H11V7H13V9Z"/>
-</svg>
-
-</div>
-
 <div id="notifyFloatingTitle">
-Informações importantes
-</div>
-
+Sessão ativa
 </div>
 
 <div id="notifyFloatingText">
-
-Para maior estabilidade, segurança e humanização das sessões conectadas ao sistema, algumas notificações do WhatsApp no aparelho podem sofrer pequenas limitações temporárias durante o uso.
+As mensagens continuam funcionando normalmente em tempo real.
 
 <br><br>
 
-As mensagens continuam sendo processadas normalmente em tempo real.
-
+Algumas notificações do aparelho podem sofrer pequenas limitações enquanto a sessão estiver ativa.
 </div>
 
 <div id="notifyFloatingSmall">
-
-Caso queira normalizar totalmente as notificações após finalizar o uso:
+Para normalizar totalmente:
 <br>
-WhatsApp → Dispositivos conectados
-
+WhatsApp → Dispositivos conectados → Encerrar sessão
 </div>
 
 `;
@@ -2694,89 +2299,6 @@ notify.remove();
 }
 
 }
-
-});
-
-</script>
-
-
-<style>
-
-#notifyFloatingClose{
-
-position:absolute;
-
-top:10px;
-right:10px;
-
-width:22px;
-height:22px;
-
-border:none;
-border-radius:999px;
-
-background:rgba(255,255,255,.05);
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-cursor:pointer;
-
-color:#94a3b8;
-
-font-size:11px;
-
-transition:.2s;
-
-}
-
-#notifyFloatingClose:hover{
-
-background:rgba(255,255,255,.10);
-
-color:#fff;
-
-}
-
-</style>
-
-<script>
-
-window.addEventListener("load",()=>{
-
-setTimeout(()=>{
-
-const notify =
-document.getElementById(
-"notifyFloatingPremium"
-);
-
-if(!notify) return;
-
-if(
-document.getElementById(
-"notifyFloatingClose"
-)
-) return;
-
-const close =
-document.createElement("button");
-
-close.id =
-"notifyFloatingClose";
-
-close.innerHTML = "✕";
-
-close.onclick = ()=>{
-
-notify.remove();
-
-};
-
-notify.appendChild(close);
-
-},500);
 
 });
 
